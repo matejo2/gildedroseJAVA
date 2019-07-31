@@ -19,24 +19,24 @@ class GildedRose {
                     && !IsConcertTicket(items[i], itemNames.backstage_passes_to_a_TAFKAL80ETC_concert)) {
                 if (itemQualityIsOverZero(items[i])) {
                     if (!IsSulfuras(items[i], itemNames.sulfuras_hand_of_ragnaros)) {
-                        items[i].quality = items[i].quality - 1;
+                        items[i].quality = DecreaseQuality(items[i].quality);
                     }
                 }
             } else {
                 if (itemQualityBelowFifty(items[i].quality, Fifty)) {
-                    items[i].quality = items[i].quality + 1;
+                    items[i].quality = IncreaseQuality(items[i]);
 
                     if (IsConcertTicket(items[i], itemNames.backstage_passes_to_a_TAFKAL80ETC_concert)) {
 
                         if (items[i].sellIn < Eleven) {
                             if (items[i].quality < Fifty) {
-                                items[i].quality = items[i].quality + 1;
+                                items[i].quality = IncreaseQuality(items[i]);
                             }
                         }
 
                         if (items[i].sellIn < 6) {
                             if (itemQualityBelowFifty(items[i].quality, Fifty)) {
-                                items[i].quality = items[i].quality + 1;
+                                items[i].quality = IncreaseQuality(items[i]);
                             }
                         }
                     }
@@ -52,7 +52,7 @@ class GildedRose {
                     if (!IsConcertTicket(items[i], itemNames.backstage_passes_to_a_TAFKAL80ETC_concert)) {
                         if (itemQualityIsOverZero(items[i])) {
                             if (!IsSulfuras(items[i], itemNames.sulfuras_hand_of_ragnaros)) {
-                                items[i].quality = items[i].quality - 1;
+                                items[i].quality = DecreaseQuality(items[i].quality);
                             }
                         }
                     } else {
@@ -60,11 +60,19 @@ class GildedRose {
                     }
                 } else {
                     if (itemQualityBelowFifty(items[i].quality, Fifty)) {
-                        items[i].quality = items[i].quality + 1;
+                        items[i].quality = IncreaseQuality(items[i]);
                     }
                 }
             }
         }
+    }
+
+    private int DecreaseQuality(int quality) {
+        return quality - 1;
+    }
+
+    private int IncreaseQuality(Item item) {
+        return item.quality + 1;
     }
 
     private boolean IsSulfuras(Item item, String sulfuras_hand_of_ragnaros) {
