@@ -15,10 +15,10 @@ class GildedRose {
             int Eleven = 11;
 
 
-            if (!items[i].name.equals(itemNames.aged_brie)
-                    && !items[i].name.equals(itemNames.backstage_passes_to_a_TAFKAL80ETC_concert)) {
+            if (!IsAgedBrie(items[i], itemNames.aged_brie)
+                    && !IsConcertTicket(items[i], itemNames.backstage_passes_to_a_TAFKAL80ETC_concert)) {
                 if (itemQualityIsOverZero(items[i])) {
-                    if (!items[i].name.equals(itemNames.sulfuras_hand_of_ragnaros)) {
+                    if (!IsSulfuras(items[i], itemNames.sulfuras_hand_of_ragnaros)) {
                         items[i].quality = items[i].quality - 1;
                     }
                 }
@@ -26,7 +26,7 @@ class GildedRose {
                 if (itemQualityBelowFifty(items[i].quality, Fifty)) {
                     items[i].quality = items[i].quality + 1;
 
-                    if (items[i].name.equals(itemNames.backstage_passes_to_a_TAFKAL80ETC_concert)) {
+                    if (IsConcertTicket(items[i], itemNames.backstage_passes_to_a_TAFKAL80ETC_concert)) {
 
                         if (items[i].sellIn < Eleven) {
                             if (items[i].quality < Fifty) {
@@ -43,15 +43,15 @@ class GildedRose {
                 }
             }
 
-            if (!items[i].name.equals(itemNames.sulfuras_hand_of_ragnaros)) {
+            if (!IsSulfuras(items[i], itemNames.sulfuras_hand_of_ragnaros)) {
                 items[i].sellIn = items[i].sellIn - 1;
             }
 
             if (items[i].sellIn < 0) {
-                if (!items[i].name.equals(itemNames.aged_brie)) {
-                    if (!items[i].name.equals(itemNames.backstage_passes_to_a_TAFKAL80ETC_concert)) {
+                if (!IsAgedBrie(items[i], itemNames.aged_brie)) {
+                    if (!IsConcertTicket(items[i], itemNames.backstage_passes_to_a_TAFKAL80ETC_concert)) {
                         if (itemQualityIsOverZero(items[i])) {
-                            if (!items[i].name.equals(itemNames.sulfuras_hand_of_ragnaros)) {
+                            if (!IsSulfuras(items[i], itemNames.sulfuras_hand_of_ragnaros)) {
                                 items[i].quality = items[i].quality - 1;
                             }
                         }
@@ -65,6 +65,18 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private boolean IsSulfuras(Item item, String sulfuras_hand_of_ragnaros) {
+        return item.name.equals(sulfuras_hand_of_ragnaros);
+    }
+
+    private boolean IsConcertTicket(Item item, String backstage_passes_to_a_tafkal80ETC_concert) {
+        return item.name.equals(backstage_passes_to_a_tafkal80ETC_concert);
+    }
+
+    private boolean IsAgedBrie(Item item, String aged_brie) {
+        return item.name.equals(aged_brie);
     }
 
     private boolean itemQualityIsOverZero(Item item) {
