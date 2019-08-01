@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-final class ItemNames {
+final class ItemValue {
     final String aged_brie = "Aged Brie";
     final String backstage_passes_to_a_TAFKAL80ETC_concert = "Backstage passes to a TAFKAL80ETC concert";
     final String sulfuras_hand_of_ragnaros = "Sulfuras, Hand of Ragnaros";

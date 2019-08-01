@@ -2,7 +2,7 @@ package com.gildedrose;
 
 class GildedRose {
     Item[] items;
-    ItemNames itemNames = new ItemNames();
+    ItemValue itemValue = new ItemValue();
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -76,15 +76,15 @@ class GildedRose {
     }
 
     private boolean IsSulfuras(Item item) {
-        return item.name.equals(itemNames.sulfuras_hand_of_ragnaros);
+        return item.name.equals(itemValue.sulfuras_hand_of_ragnaros);
     }
 
     private boolean IsConcertTicket(Item item) {
-        return item.name.equals(itemNames.backstage_passes_to_a_TAFKAL80ETC_concert);
+        return item.name.equals(itemValue.backstage_passes_to_a_TAFKAL80ETC_concert);
     }
 
     private boolean IsAgedBrie(Item item) {
-        return item.name.equals(itemNames.aged_brie);
+        return item.name.equals(itemValue.aged_brie);
     }
 
     private boolean itemQualityIsOverZero(Item item) {

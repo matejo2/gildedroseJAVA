@@ -1,11 +1,13 @@
 package com.gildedrose;
 
-import org.junit.Before;
 import org.junit.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 public class GildedRoseTest {
+
+    ItemValue itemValue = new ItemValue();
 
     @Test
     public void ItemExists() {
@@ -13,6 +15,19 @@ public class GildedRoseTest {
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals("foo", app.items[0].name);
+    }
+
+    @Test
+    public void QualityNeverDropsBelow_0() {
+        Item[] items = new Item[]{
+                new Item(itemValue.potion, 0, 0),
+                new Item(itemValue.elixir_of_mongoose, 2, 1)};
+        GildedRose app  = new GildedRose(items);
+        app.updateQuality();
+        app.updateQuality();
+        app.updateQuality();
+        assertThat(items[0].quality).isEqualTo(0);
+        assertThat(items[1].quality).isEqualTo(0);
     }
 }
 
