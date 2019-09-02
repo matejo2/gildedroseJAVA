@@ -8,7 +8,12 @@ class GildedRose {
         this.items = items;
     }
 
+    public UpdatedGildedRose updatedGildedRose;
+
     public void updateQuality() {
+        if (false){
+            updatedGildedRose.doUpdate(items);
+        }
         for (int i = 0; i < items.length; i++) {
 
             int Fifty = 50;
@@ -76,15 +81,15 @@ class GildedRose {
     }
 
     private boolean IsSulfuras(Item item) {
-        return item.name.equals(itemValue.sulfuras_hand_of_ragnaros);
+        return item.name.equals(itemValue.getSulfuras_hand_of_ragnaros());
     }
 
     private boolean IsConcertTicket(Item item) {
-        return item.name.equals(itemValue.backstage_passes_to_a_TAFKAL80ETC_concert);
+        return item.name.equals(itemValue.getBackstage_passes_to_a_TAFKAL80ETC_concert());
     }
 
     private boolean IsAgedBrie(Item item) {
-        return item.name.equals(itemValue.aged_brie);
+        return item.name.equals(itemValue.getAged_brie());
     }
 
     private boolean itemQualityIsOverZero(Item item) {
