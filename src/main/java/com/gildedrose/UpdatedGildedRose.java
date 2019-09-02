@@ -11,6 +11,11 @@ public class UpdatedGildedRose {
     }
 
     public void doUpdate(Item[] items) {
-        Arrays.stream(items).anyMatch(item -> item.name == itemValue.cursed_sword);
+        //maybe turn through another list and do things accordingly
+        Arrays.stream(items).anyMatch(item -> item.name == itemValue.getPotion());
+    }
+
+    private int updateOnNormalItem(int quality) {
+        return quality - 1;
     }
 }

@@ -9,5 +9,5 @@ final class ItemValue {
     final String sulfuras_hand_of_ragnaros = "Sulfuras, Hand of Ragnaros";
     final String potion = "Potion";
     final String elixir_of_mongoose = "Elixir of the Mongoose";
-    public String cursed_sword = "Cursed Sword";
+    final String cursed_sword = "Cursed Sword";
 }

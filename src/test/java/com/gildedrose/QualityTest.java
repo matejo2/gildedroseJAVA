@@ -68,7 +68,7 @@ public class QualityTest {
     @Test
     public void CursedItemQualityDropsDouble() {
         Item[] items = new Item[]{
-                new Item(itemValue.cursed_sword, 20, 48)};
+                new Item(itemValue.getCursed_sword(), 20, 48)};
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         app.updateQuality();

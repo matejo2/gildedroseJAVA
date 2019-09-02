@@ -1,7 +1,5 @@
 package com.gildedrose;
 
-import lombok.ToString;
-
 public class Item {
 
     public String name;
