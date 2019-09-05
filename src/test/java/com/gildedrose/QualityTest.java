@@ -34,7 +34,7 @@ public class QualityTest {
         app.updateQuality();
         System.out.println(items[0].toString() + "\n" + items[1].toString());
         assertThat(items[0].quality).isEqualTo(26);
-        // assertThat(items[1].quality).isEqualTo(16);
+        assertThat(items[1].quality).isEqualTo(16);
     }
 
     @Test

@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import java.util.Arrays;
+
 class GildedRose {
     Item[] items;
     ItemValue itemValue = new ItemValue();
@@ -12,8 +14,10 @@ class GildedRose {
 
     public void updateQuality() {
         if (true) {
-            items[0].quality = items[0].quality - 1;
-            items[0].sellIn = items[0].sellIn - 1;
+            Arrays.stream(items)
+                    .map(this::decreaseItem)
+                    .toArray();
+
             return;
         }
         for (int i = 0; i < items.length; i++) {
@@ -72,6 +76,12 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private Item decreaseItem(Item item) {
+        item.quality = DecreaseQuality(item.quality);
+        item.sellIn = item.sellIn - 1;
+        return item;
     }
 
     private int DecreaseQuality(int quality) {
