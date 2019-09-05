@@ -11,7 +11,7 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        if (true) {
+        if (false) {
             Arrays.stream(items)
                     .map(this::decreaseItem)
                     .toArray();
@@ -83,9 +83,6 @@ class GildedRose {
     }
 
     private int DecreaseQuality(int quality) {
-        if (quality == 0){
-            return 0;
-        }
         return quality - 1;
     }
 
