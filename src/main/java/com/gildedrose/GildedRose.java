@@ -11,8 +11,10 @@ class GildedRose {
     public UpdatedGildedRose updatedGildedRose;
 
     public void updateQuality() {
-        if (true){
-            updatedGildedRose.doUpdate(items);
+        if (true) {
+            items[0].quality = items[0].quality - 1;
+            items[0].sellIn = items[0].sellIn - 1;
+            return;
         }
         for (int i = 0; i < items.length; i++) {
 
