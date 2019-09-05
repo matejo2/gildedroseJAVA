@@ -1,7 +1,5 @@
 package com.gildedrose;
 
-import java.util.Arrays;
-
 class GildedRose {
     Item[] items;
 
@@ -85,15 +83,15 @@ class GildedRose {
     }
 
     private boolean IsSulfuras(Item item) {
-        return item.name.equals(ItemValue.sulfuras_hand_of_ragnaros);
+        return item.name.equals(ItemValue.SULFURAS_HAND_OF_RAGNAROS);
     }
 
     private boolean IsConcertTicket(Item item) {
-        return item.name.equals(ItemValue.backstage_passes_to_a_TAFKAL80ETC_concert);
+        return item.name.equals(ItemValue.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT);
     }
 
     private boolean IsAgedBrie(Item item) {
-        return item.name.equals(ItemValue.aged_brie);
+        return item.name.equals(ItemValue.AGED_BRIE);
     }
 
     private boolean itemQualityIsOverZero(Item item) {
