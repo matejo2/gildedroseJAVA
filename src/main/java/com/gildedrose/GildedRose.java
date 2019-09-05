@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 class GildedRose {
     Item[] items;
-    ItemValue itemValue = new ItemValue();
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -13,10 +12,8 @@ class GildedRose {
     UpdatedGildedRose updatedGildedRose = new UpdatedGildedRose();
 
     public void updateQuality() {
-        if (true) {
+        if (false) {
             updatedGildedRose.update(items);
-
-
             return;
         }
         for (int i = 0; i < items.length; i++) {
@@ -88,15 +85,15 @@ class GildedRose {
     }
 
     private boolean IsSulfuras(Item item) {
-        return item.name.equals(itemValue.getSulfuras_hand_of_ragnaros());
+        return item.name.equals(ItemValue.sulfuras_hand_of_ragnaros);
     }
 
     private boolean IsConcertTicket(Item item) {
-        return item.name.equals(itemValue.getBackstage_passes_to_a_TAFKAL80ETC_concert());
+        return item.name.equals(ItemValue.backstage_passes_to_a_TAFKAL80ETC_concert);
     }
 
     private boolean IsAgedBrie(Item item) {
-        return item.name.equals(itemValue.getAged_brie());
+        return item.name.equals(ItemValue.aged_brie);
     }
 
     private boolean itemQualityIsOverZero(Item item) {

@@ -10,6 +10,8 @@ public class UpdatedGildedRose {
     }
 
     private Item decreaseItem(Item item) {
+        //aged brie
+        if(item.name == ItemValue.aged_brie)
         item.quality = DecreaseQuality(item.quality);
         item.sellIn = item.sellIn - 1;
         return item;
