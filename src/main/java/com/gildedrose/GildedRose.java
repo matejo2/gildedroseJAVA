@@ -10,7 +10,7 @@ class GildedRose {
     UpdatedGildedRose updatedGildedRose = new UpdatedGildedRose();
 
     public void updateQuality() {
-        if (false) {
+        if (true) {
             updatedGildedRose.update(items);
             return;
         }
