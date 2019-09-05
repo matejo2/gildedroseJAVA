@@ -10,8 +10,6 @@ class GildedRose {
         this.items = items;
     }
 
-    public UpdatedGildedRose updatedGildedRose;
-
     public void updateQuality() {
         if (true) {
             Arrays.stream(items)
@@ -85,6 +83,9 @@ class GildedRose {
     }
 
     private int DecreaseQuality(int quality) {
+        if (quality == 0){
+            return 0;
+        }
         return quality - 1;
     }
 
