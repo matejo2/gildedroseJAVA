@@ -10,11 +10,12 @@ class GildedRose {
         this.items = items;
     }
 
+    UpdatedGildedRose updatedGildedRose = new UpdatedGildedRose();
+
     public void updateQuality() {
-        if (false) {
-            Arrays.stream(items)
-                    .map(this::decreaseItem)
-                    .toArray();
+        if (true) {
+            updatedGildedRose.update(items);
+
 
             return;
         }
@@ -76,11 +77,7 @@ class GildedRose {
         }
     }
 
-    private Item decreaseItem(Item item) {
-        item.quality = DecreaseQuality(item.quality);
-        item.sellIn = item.sellIn - 1;
-        return item;
-    }
+
 
     private int DecreaseQuality(int quality) {
         return quality - 1;
