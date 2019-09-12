@@ -1,7 +1,5 @@
 package com.gildedrose;
 
-import com.sun.org.apache.regexp.internal.RE;
-
 import java.util.Arrays;
 
 class GildedRose {
@@ -28,25 +26,23 @@ class GildedRose {
                 }
             }
         }
-        else {
-            if (IsAgedBrie(item)) {
-                item.quality = IncreaseQuality(item);
-            }
-            if (IsConcertTicket(item)) {
-                item.quality = IncreaseQuality(item);
-                if (item.sellIn < 11) {
-                        item.quality = IncreaseQuality(item);
-
-                }
-
-                if (item.sellIn < 6) {
-                    if (itemQualityBelowFifty(item.quality)) {
-                        item.quality = IncreaseQuality(item);
-                    }
-                }
-            }
-
+        if (IsAgedBrie(item)) {
+            item.quality = IncreaseQuality(item);
         }
+        if (IsConcertTicket(item)) {
+            item.quality = IncreaseQuality(item);
+            if (item.sellIn < 11) {
+                item.quality = IncreaseQuality(item);
+
+            }
+
+            if (item.sellIn < 6) {
+                if (itemQualityBelowFifty(item.quality)) {
+                    item.quality = IncreaseQuality(item);
+                }
+            }
+        }
+
 
         if (!IsSulfuras(item)) {
             item.sellIn = item.sellIn - 1;
@@ -77,8 +73,7 @@ class GildedRose {
     }
 
     private int IncreaseQuality(Item item) {
-        if(item.quality == 50)
-        {
+        if (item.quality == 50) {
             return 50;
         }
         return item.quality + 1;
