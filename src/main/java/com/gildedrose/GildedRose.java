@@ -19,20 +19,16 @@ class GildedRose {
 
     private void doStuffForEachItem(Item item) {
 
-        if (IsSulfuras(item)) {
+        if (item.name == ItemValue.SULFURAS_HAND_OF_RAGNAROS) {
             return;
         }
-        if (!IsAgedBrie(item) && !IsConcertTicket(item)) {
-            if (itemQualityIsOverZero(item)) {
-                if (!IsSulfuras(item)) {
-                    item.quality = DecreaseQuality(item);
-                }
-            }
+
+        if (item.name == ItemValue.AGED_BRIE) {
+            UpdateAgedBrie(item);
+            return;
         }
-        if (IsAgedBrie(item)) {
-            item.quality = IncreaseQuality(item);
-        }
-        if (IsConcertTicket(item)) {
+
+        if (item.name == ItemValue.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT) {
             item.quality = IncreaseQuality(item);
             if (item.sellIn < 11) {
                 item.quality = IncreaseQuality(item);
@@ -40,14 +36,33 @@ class GildedRose {
             }
 
             if (item.sellIn < 6) {
-                if (itemQualityBelowFifty(item.quality)) {
+                if (item.quality < 50) {
                     item.quality = IncreaseQuality(item);
                 }
             }
+            item.sellIn = item.sellIn - 1;
+
         }
+
+        if (!IsAgedBrie(item) && !IsConcertTicket(item)) {
+            if (itemQualityIsOverZero(item)) {
+                if (!IsSulfuras(item)) {
+                    item.quality = DecreaseQuality(item);
+                }
+            }
+            item.sellIn = item.sellIn - 1;
+        }
+
+
+        UpdateQualityWhenSellInIsBelowZero(item);
+    }
+
+    private void UpdateAgedBrie(Item item) {
+        item.quality = IncreaseQuality(item);
         item.sellIn = item.sellIn - 1;
+    }
 
-
+    private void UpdateQualityWhenSellInIsBelowZero(Item item) {
         if (item.sellIn < 0) {
             if (!IsAgedBrie(item)) {
                 if (!IsConcertTicket(item)) {
@@ -57,10 +72,6 @@ class GildedRose {
                     }
                 } else {
                     item.quality = 0;
-                }
-            } else {
-                if (itemQualityBelowFifty(item.quality)) {
-                    item.quality = IncreaseQuality(item);
                 }
             }
         }
@@ -94,7 +105,4 @@ class GildedRose {
         return item.quality > 0;
     }
 
-    private boolean itemQualityBelowFifty(int quality) {
-        return quality < 50;
-    }
 }
