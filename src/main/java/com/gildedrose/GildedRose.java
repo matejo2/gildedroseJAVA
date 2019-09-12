@@ -22,15 +22,15 @@ class GildedRose {
         int Eleven = 11;
 
 
-        if (!IsAgedBrie(item)
-                && !IsConcertTicket(item)) {
+        if (!IsAgedBrie(item) && !IsConcertTicket(item)) {
             if (itemQualityIsOverZero(item)) {
                 if (!IsSulfuras(item)) {
-                    item.quality = DecreaseQuality(item.quality);
+                    item.quality = DecreaseQuality(item);
                 }
             }
-        } else {
-            if (itemQualityBelowFifty(item.quality, Fifty)) {
+        }
+        else {
+            if (itemQualityBelowFifty(item.quality)) {
                 item.quality = IncreaseQuality(item);
             }
             if (IsConcertTicket(item)) {
@@ -42,7 +42,7 @@ class GildedRose {
                 }
 
                 if (item.sellIn < 6) {
-                    if (itemQualityBelowFifty(item.quality, Fifty)) {
+                    if (itemQualityBelowFifty(item.quality)) {
                         item.quality = IncreaseQuality(item);
                     }
                 }
@@ -59,14 +59,14 @@ class GildedRose {
                 if (!IsConcertTicket(item)) {
                     if (itemQualityIsOverZero(item)) {
                         if (!IsSulfuras(item)) {
-                            item.quality = DecreaseQuality(item.quality);
+                            item.quality = DecreaseQuality(item);
                         }
                     }
                 } else {
                     item.quality = 0;
                 }
             } else {
-                if (itemQualityBelowFifty(item.quality, Fifty)) {
+                if (itemQualityBelowFifty(item.quality)) {
                     item.quality = IncreaseQuality(item);
                 }
             }
@@ -74,8 +74,8 @@ class GildedRose {
     }
 
 
-    private int DecreaseQuality(int quality) {
-        return quality - 1;
+    private int DecreaseQuality(Item item) {
+        return item.quality - 1;
     }
 
     private int IncreaseQuality(Item item) {
@@ -98,7 +98,7 @@ class GildedRose {
         return item.quality > 0;
     }
 
-    private boolean itemQualityBelowFifty(int quality, int i2) {
-        return quality < i2;
+    private boolean itemQualityBelowFifty(int quality) {
+        return quality < 50;
     }
 }
