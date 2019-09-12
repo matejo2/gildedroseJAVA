@@ -13,13 +13,7 @@ class GildedRose {
 
     public void updateQuality() {
 
-        if (false) {
-            updatedGildedRose.update(items);
-            return;
-        }
-
-
-        Arrays.stream(items).forEach(item -> doStuffForEachItem(item));
+        Arrays.stream(items).forEach(this::doStuffForEachItem);
 
     }
 
@@ -38,22 +32,22 @@ class GildedRose {
         } else {
             if (itemQualityBelowFifty(item.quality, Fifty)) {
                 item.quality = IncreaseQuality(item);
+            }
+            if (IsConcertTicket(item)) {
 
-                if (IsConcertTicket(item)) {
-
-                    if (item.sellIn < Eleven) {
-                        if (item.quality < Fifty) {
-                            item.quality = IncreaseQuality(item);
-                        }
+                if (item.sellIn < Eleven) {
+                    if (item.quality < Fifty) {
+                        item.quality = IncreaseQuality(item);
                     }
+                }
 
-                    if (item.sellIn < 6) {
-                        if (itemQualityBelowFifty(item.quality, Fifty)) {
-                            item.quality = IncreaseQuality(item);
-                        }
+                if (item.sellIn < 6) {
+                    if (itemQualityBelowFifty(item.quality, Fifty)) {
+                        item.quality = IncreaseQuality(item);
                     }
                 }
             }
+
         }
 
         if (!IsSulfuras(item)) {
