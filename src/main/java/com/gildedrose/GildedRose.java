@@ -19,6 +19,9 @@ class GildedRose {
 
     private void doStuffForEachItem(Item item) {
 
+        if (IsSulfuras(item)) {
+            return;
+        }
         if (!IsAgedBrie(item) && !IsConcertTicket(item)) {
             if (itemQualityIsOverZero(item)) {
                 if (!IsSulfuras(item)) {
@@ -42,19 +45,15 @@ class GildedRose {
                 }
             }
         }
+        item.sellIn = item.sellIn - 1;
 
-
-        if (!IsSulfuras(item)) {
-            item.sellIn = item.sellIn - 1;
-        }
 
         if (item.sellIn < 0) {
             if (!IsAgedBrie(item)) {
                 if (!IsConcertTicket(item)) {
                     if (itemQualityIsOverZero(item)) {
-                        if (!IsSulfuras(item)) {
-                            item.quality = DecreaseQuality(item);
-                        }
+                        item.quality = DecreaseQuality(item);
+
                     }
                 } else {
                     item.quality = 0;
