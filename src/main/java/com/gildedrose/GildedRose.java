@@ -35,9 +35,8 @@ class GildedRose {
             if (IsConcertTicket(item)) {
                 item.quality = IncreaseQuality(item);
                 if (item.sellIn < 11) {
-                    if (item.quality < 50) {
                         item.quality = IncreaseQuality(item);
-                    }
+
                 }
 
                 if (item.sellIn < 6) {
