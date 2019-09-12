@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import java.util.Arrays;
+
 class GildedRose {
     Item[] items;
 
@@ -10,68 +12,72 @@ class GildedRose {
     UpdatedGildedRose updatedGildedRose = new UpdatedGildedRose();
 
     public void updateQuality() {
-        if (true) {
+
+        if (false) {
             updatedGildedRose.update(items);
             return;
         }
-        for (int i = 0; i < items.length; i++) {
-
-            int Fifty = 50;
-            int Eleven = 11;
 
 
-            if (!IsAgedBrie(items[i])
-                    && !IsConcertTicket(items[i])) {
-                if (itemQualityIsOverZero(items[i])) {
-                    if (!IsSulfuras(items[i])) {
-                        items[i].quality = DecreaseQuality(items[i].quality);
-                    }
+        Arrays.stream(items).forEach(item -> doStuffForEachItem(item));
+
+    }
+
+    private void doStuffForEachItem(Item item) {
+        int Fifty = 50;
+        int Eleven = 11;
+
+
+        if (!IsAgedBrie(item)
+                && !IsConcertTicket(item)) {
+            if (itemQualityIsOverZero(item)) {
+                if (!IsSulfuras(item)) {
+                    item.quality = DecreaseQuality(item.quality);
                 }
-            } else {
-                if (itemQualityBelowFifty(items[i].quality, Fifty)) {
-                    items[i].quality = IncreaseQuality(items[i]);
+            }
+        } else {
+            if (itemQualityBelowFifty(item.quality, Fifty)) {
+                item.quality = IncreaseQuality(item);
 
-                    if (IsConcertTicket(items[i])) {
+                if (IsConcertTicket(item)) {
 
-                        if (items[i].sellIn < Eleven) {
-                            if (items[i].quality < Fifty) {
-                                items[i].quality = IncreaseQuality(items[i]);
-                            }
+                    if (item.sellIn < Eleven) {
+                        if (item.quality < Fifty) {
+                            item.quality = IncreaseQuality(item);
                         }
+                    }
 
-                        if (items[i].sellIn < 6) {
-                            if (itemQualityBelowFifty(items[i].quality, Fifty)) {
-                                items[i].quality = IncreaseQuality(items[i]);
-                            }
+                    if (item.sellIn < 6) {
+                        if (itemQualityBelowFifty(item.quality, Fifty)) {
+                            item.quality = IncreaseQuality(item);
                         }
                     }
                 }
             }
+        }
 
-            if (!IsSulfuras(items[i])) {
-                items[i].sellIn = items[i].sellIn - 1;
-            }
+        if (!IsSulfuras(item)) {
+            item.sellIn = item.sellIn - 1;
+        }
 
-            if (items[i].sellIn < 0) {
-                if (!IsAgedBrie(items[i])) {
-                    if (!IsConcertTicket(items[i])) {
-                        if (itemQualityIsOverZero(items[i])) {
-                            if (!IsSulfuras(items[i])) {
-                                items[i].quality = DecreaseQuality(items[i].quality);
-                            }
+        if (item.sellIn < 0) {
+            if (!IsAgedBrie(item)) {
+                if (!IsConcertTicket(item)) {
+                    if (itemQualityIsOverZero(item)) {
+                        if (!IsSulfuras(item)) {
+                            item.quality = DecreaseQuality(item.quality);
                         }
-                    } else {
-                        items[i].quality = 0;
                     }
                 } else {
-                    if (itemQualityBelowFifty(items[i].quality, Fifty)) {
-                        items[i].quality = IncreaseQuality(items[i]);
-                    }
+                    item.quality = 0;
+                }
+            } else {
+                if (itemQualityBelowFifty(item.quality, Fifty)) {
+                    item.quality = IncreaseQuality(item);
                 }
             }
         }
     }
-
 
 
     private int DecreaseQuality(int quality) {
