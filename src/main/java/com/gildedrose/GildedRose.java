@@ -32,14 +32,11 @@ class GildedRose {
             if (item.sellIn < 6) {
                 item.quality = IncreaseQuality(item);
             }
-
         }
 
         if (!IsAgedBrie(item) && !IsConcertTicket(item)) {
             if (itemQualityIsOverZero(item)) {
-                if (!IsSulfuras(item)) {
                     item.quality = DecreaseQuality(item);
-                }
             }
         }
 
