@@ -5,30 +5,26 @@ import java.util.Arrays;
 class GildedRose {
     Item[] items;
 
-    public GildedRose(Item[] items) {
+    GildedRose(Item[] items) {
         this.items = items;
     }
 
-    UpdatedGildedRose updatedGildedRose = new UpdatedGildedRose();
-
-    public void updateQuality() {
-
+    void updateQuality() {
         Arrays.stream(items).forEach(this::doStuffForEachItem);
-
     }
 
     private void doStuffForEachItem(Item item) {
 
-        if (item.name == ItemValue.SULFURAS_HAND_OF_RAGNAROS) {
+        if (item.name.equals(ItemValue.SULFURAS_HAND_OF_RAGNAROS)) {
             return;
         }
 
-        if (item.name == ItemValue.AGED_BRIE) {
+        if (item.name.equals(ItemValue.AGED_BRIE)) {
             UpdateAgedBrie(item);
             return;
         }
 
-        if (item.name == ItemValue.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT) {
+        if (item.name.equals(ItemValue.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT)) {
             item.quality = IncreaseQuality(item);
             if (item.sellIn < 11) {
                 item.quality = IncreaseQuality(item);
@@ -52,7 +48,6 @@ class GildedRose {
             }
             item.sellIn = item.sellIn - 1;
         }
-
 
         UpdateQualityWhenSellInIsBelowZero(item);
     }
