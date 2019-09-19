@@ -35,9 +35,7 @@ class GildedRose {
         }
 
         if (!IsAgedBrie(item) && !IsConcertTicket(item)) {
-            if (itemQualityIsOverZero(item)) {
-                    item.quality = DecreaseQuality(item);
-            }
+            item.quality = DecreaseQuality(item);
         }
 
         item.sellIn = item.sellIn - 1;
@@ -61,6 +59,9 @@ class GildedRose {
 
 
     private int DecreaseQuality(Item item) {
+        if (item.quality == 0) {
+            return item.quality;
+        }
         return item.quality - 1;
     }
 
