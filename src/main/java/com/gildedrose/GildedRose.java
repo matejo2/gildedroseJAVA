@@ -27,13 +27,10 @@ class GildedRose {
             item.quality = IncreaseQuality(item);
             if (item.sellIn < 11) {
                 item.quality = IncreaseQuality(item);
-
             }
 
             if (item.sellIn < 6) {
-                if (item.quality < 50) {
-                    item.quality = IncreaseQuality(item);
-                }
+                item.quality = IncreaseQuality(item);
             }
 
         }
