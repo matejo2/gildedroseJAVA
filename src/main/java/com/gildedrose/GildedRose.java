@@ -20,8 +20,7 @@ class GildedRose {
         }
 
         if (item.name.equals(ItemValue.AGED_BRIE)) {
-            UpdateAgedBrie(item);
-            return;
+            item.quality = IncreaseQuality(item);
         }
 
         if (item.name.equals(ItemValue.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT)) {
@@ -49,11 +48,6 @@ class GildedRose {
 
         item.sellIn = item.sellIn - 1;
         UpdateQualityWhenSellInIsBelowZero(item);
-    }
-
-    private void UpdateAgedBrie(Item item) {
-        item.quality = IncreaseQuality(item);
-        item.sellIn = item.sellIn - 1;
     }
 
     private void UpdateQualityWhenSellInIsBelowZero(Item item) {
