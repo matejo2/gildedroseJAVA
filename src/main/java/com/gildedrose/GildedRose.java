@@ -36,7 +36,6 @@ class GildedRose {
                     item.quality = IncreaseQuality(item);
                 }
             }
-            item.sellIn = item.sellIn - 1;
 
         }
 
@@ -46,9 +45,9 @@ class GildedRose {
                     item.quality = DecreaseQuality(item);
                 }
             }
-            item.sellIn = item.sellIn - 1;
         }
 
+        item.sellIn = item.sellIn - 1;
         UpdateQualityWhenSellInIsBelowZero(item);
     }
 

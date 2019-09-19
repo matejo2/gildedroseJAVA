@@ -64,6 +64,7 @@ public class QualityTest {
         assertThat(items[0].quality).isEqualTo(50);
     }
 
+    /*
     @Ignore //because cursed attribute isn't added yet
     @Test
     public void CursedItemQualityDropsDouble() {
@@ -76,6 +77,8 @@ public class QualityTest {
         System.out.println(items[0].toString());
         assertThat(items[0].quality).isEqualTo(44);
     }
+    */
+
 
     @Test
     public void SulfurasQualityIsAlways_80() {
